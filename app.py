@@ -12,11 +12,9 @@ if st.button("Get Country Data"):
     if isinstance(data, str):
         st.write(data)
     else:
-
         country_name = data["data"]["objects"][0]["names"]["common"]
         flag_emoji = data["data"]["objects"][0]["flag"]["emoji"]
         capital_city = data["data"]["objects"][0]["capitals"][0]['name']
-
         st.write(f'you choose a country: {country_name} {flag_emoji}')
         st.write(f'capital city of {country_name} is: {capital_city}')
 
@@ -32,6 +30,3 @@ if st.button("Get Country Data"):
 
             st.write(f'Weather in {capital_city}: {weather_info}')
             st.write(f'Temperature in {capital_city}: min {temp_min}°C, max {temp_max}°C')
-
-        
-
