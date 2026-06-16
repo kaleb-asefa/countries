@@ -1,5 +1,5 @@
 import streamlit as st
-from main import country_request
+from main import country_request, get_city_coordinates, weather_request
 
 st.title("Countries API Data")
 
@@ -20,6 +20,13 @@ if st.button("Get Country Data"):
         st.write(f'you choose a country: {country_name} {flag_emoji}')
         st.write(f'capital city of {country_name} is: {capital_city}')
 
-        st.write((data))
-        st.write(len((data['data']['objects'])))
+        city_coordinates = get_city_coordinates(data)
+        city_weather = weather_request(city_coordinates)
+
+        if isinstance(city_weather, str):
+            st.write(city_weather)
+        else:
+            st.json(city_weather)
+
+        
 
