@@ -26,7 +26,12 @@ if st.button("Get Country Data"):
         if isinstance(city_weather, str):
             st.write(city_weather)
         else:
-            st.json(city_weather)
+            weather_info = city_weather['weather'][0]['description']
+            temp_min = city_weather['main']['temp_min']
+            temp_max = city_weather['main']['temp_max']
+
+            st.write(f'Weather in {capital_city}: {weather_info}')
+            st.write(f'Temperature in {capital_city}: min {temp_min}°C, max {temp_max}°C')
 
         
 

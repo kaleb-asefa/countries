@@ -54,10 +54,11 @@ def get_city_coordinates(data):
 def weather_request(city_coordinates):
   params = {'lat': city_coordinates['lat'],
             'lon': city_coordinates['lng'],
-            'appid': WEATHER_API_KEY}
+            'appid': WEATHER_API_KEY,
+            'units': 'metric'}
   try:
     response = requests.get(
-      'https://api.openweathermap.org/data/4.0/onecall/current', params=params
+      'https://api.openweathermap.org/data/2.5/weather', params=params
       )
     response.raise_for_status()
 
